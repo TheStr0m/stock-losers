@@ -8,13 +8,16 @@ page_html = uClient.read()
 uClient.close()
 page_soup= soup(page_html,"html.parser")
 
-class stock:
-    def __init__(self, name, perc, price):
-        self.name=name
-        self.perc=perc
-        self.price=price
+stocks=[]
 
 table= page_soup.select("tbody")[1]
 
 for row in table.find_all("tr"):
-    print(row.select("td#instrumentName > span > a"}))
+    nameElement = (row.select("td.instrumentName span a"))
+    name = (nameElement[0].get("title","no title"))
+    percElement = (row.select("td.changePercent"))
+    perc = (percElement[0].text)
+    priceElement = (row.select("td.lastPrice span"))
+    price = (priceElement[0].text)
+    stocks.append([name,perc,price])
+print(stocks)
