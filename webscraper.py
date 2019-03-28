@@ -9,15 +9,14 @@ uClient.close()
 page_soup= soup(page_html,"html.parser")
 
 stocks=[]
-
 table= page_soup.select("tbody")[1]
-
 for row in table.find_all("tr"):
-    nameElement = (row.select("td.instrumentName span a"))
-    name = (nameElement[0].get("title","no title"))
-    percElement = (row.select("td.changePercent"))
-    perc = (percElement[0].text)
     priceElement = (row.select("td.lastPrice span"))
-    price = (priceElement[0].text)
-    stocks.append([name,perc,price])
+    price = float((priceElement[0].text).replace(",","."))
+    if price>20:
+        nameElement = (row.select("td.instrumentName span a"))
+        name = (nameElement[0].get("title","no title"))
+        percElement = (row.select("td.changePercent"))
+        perc = float((percElement[0].text).replace(",","."))
+        stocks.append([name,perc,price])
 print(stocks)
