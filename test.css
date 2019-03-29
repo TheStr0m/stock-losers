@@ -1,3 +1,9 @@
-table{
-    border: solid 1px black;
+.testTable{
+    border: solid 10px black;
+}
+tr{
+    border: solid 10px black;
+}
+th{
+    border: solid 10px black;
 }

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="test.css">
     <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <table>
+    <table class='testTable'>
         <tr>
             <th>Name</th>
             <th>Losses</th>
@@ -26,9 +26,13 @@ $(document).ready(function () {
         var stocks_data = '';
         $.each(data, function (key, value) { 
              stocks_data += '<tr>';
-             stocks_data += '<td>' + value.name + '</td>'
+             stocks_data += '<td>' + value.name + '</td>';
+             stocks_data += '<td>' + value.perc + '</td>';
+             stocks_data += '<td>' + value.price + '</td>';
+             stocks_data += '</tr>';
         });
-    }
+        $('.testTable').append(stocks_data);
+    });
 
 });
 </script>
