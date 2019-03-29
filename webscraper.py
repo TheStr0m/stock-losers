@@ -22,6 +22,10 @@ for row in table.find_all("tr"):
         percElement = (row.select("td.changePercent"))
         perc = float((percElement[0].text).replace(",","."))
         stocks.append([name,perc,price])
+data=open("data.json","w")
+data.write("")
+data.close()
+
 for stock in stocks:
     stockjson={
         "name":stock[0],
@@ -32,11 +36,9 @@ for stock in stocks:
     stockjson=json.dumps(stockjson)
     data = open("data.json","a+")
     if stock == stocks[0]:
-        data.write(starttag)
         data.write(stockjson)
     if stock == stocks[-1]:
         data.write(",\n"+stockjson)
-        data.write(endtag)
     else:
         data.write(",\n"+stockjson)
     data.close()
