@@ -10,8 +10,8 @@ uClient.close()
 page_soup= soup(page_html,"html.parser")
 
 stocks=[]
-starttag='{\n"stocks":[\n'
-endtag=']\n}'
+starttag='['
+endtag=']'
 table= page_soup.select("tbody")[1]
 for row in table.find_all("tr"):
     priceElement = (row.select("td.lastPrice span"))
@@ -36,9 +36,11 @@ for stock in stocks:
     stockjson=json.dumps(stockjson)
     data = open("data.json","a+")
     if stock == stocks[0]:
+        data.write(starttag)
         data.write(stockjson)
     if stock == stocks[-1]:
         data.write(",\n"+stockjson)
+        data.write(endtag)
     else:
         data.write(",\n"+stockjson)
     data.close()
