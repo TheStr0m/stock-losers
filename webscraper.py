@@ -38,7 +38,7 @@ for stock in stocks:
     if stock == stocks[0]:
         data.write(starttag)
         data.write(stockjson)
-    if stock == stocks[-1]:
+    elif stock == stocks[-1]:
         data.write(",\n"+stockjson)
         data.write(endtag)
     else:
