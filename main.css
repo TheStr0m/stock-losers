@@ -1,0 +1,26 @@
+.table.table-striped.table-dark tr{
+    color: rgb(0, 0, 0);
+}
+
+.table.table-striped.table-dark tr:nth-child(odd){
+    background-color: rgb(255, 255, 255);
+}
+
+.table.table-striped.table-dark tr:nth-child(even){
+    background-color: rgb(255, 255, 255);
+}
+.table.table-striped.table-dark tr:nth-child(1){
+    background-color: #2C3E50;
+    color: white;
+}
+
+.tingotable{
+    overflow: hidden;
+    border-collapse: collapse;
+    width: 70%;
+    font-size: 2em;
+    font-family: montserrat;
+    border-radius: 1em;
+    margin: 2em;
+    background-color: #18bc9c;
+}

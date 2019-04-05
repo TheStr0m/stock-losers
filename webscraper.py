@@ -64,4 +64,4 @@ while True:
     webLoad(my_url)
     dataPick(myTable,myStocks)
     writeToJson(myJsonFile,myStocks)
-    time.sleep(3)
+    time.sleep(300)

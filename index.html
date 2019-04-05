@@ -23,7 +23,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/freelancer.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="main.css">
 
 </head>
 
@@ -65,15 +65,16 @@
   </header>
 
 <!--Stocks table-->
-<section class="bg-primary text-white mb-0" id="table"></section>
-<table class="table">
-  <caption>List of dropped stocks</caption>
-    <tr>
+<section class="bg-primary text-white mb-0"></section>
+<center style="background-color:#18bc9c;">
+  <table class="table tingotable table-striped table-dark">
+    <tr class="rounded">
       <th scope="col">Name</th>
       <th scope="col">Perc</th>
       <th scope="col">Value</th>
     </tr>
-</table>
+  </table>  
+</center>
 
   <!-- Portfolio Grid Section
   <section class="portfolio" id="portfolio">
@@ -149,7 +150,7 @@
   <section class="bg-primary text-white mb-0" id="about">
     <div class="container">
       <h2 class="text-center text-uppercase text-white">About</h2>
-      <hr class="star-light mb-5">
+      <hr class="star-lights mb-5">
       <div class="row">
         <div class="col-lg-4 ml-auto">
           <p class="lead">Top Losers is a free to use stock market analyzing service online on our web-page aswell as on our app. </p>
@@ -411,22 +412,6 @@
     </div>
   </div>
 
-  <script>
-      $(document).ready(function () {
-          $.getJSON("./data.json", function(data) {
-              var stocks_data = '';
-              $.each(data, function (key, value) { 
-                   stocks_data += '<tr>';
-                   stocks_data += '<td>' + value.name + '</td>';
-                   stocks_data += '<td>' + value.perc + '</td>';
-                   stocks_data += '<td>' + value.price + '</td>';
-                   stocks_data += '</tr>';
-              });
-              $('.table').append(stocks_data);
-          });
-      
-      });
-      </script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -442,6 +427,8 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="main.js"></script>
 
 </body>
 
