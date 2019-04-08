@@ -19,6 +19,10 @@ def webLoad(url):
     uClient.close()
     page_soup= soup(page_html,"html.parser")
     global myTable
+    try:
+        myTable= page_soup.select("tbody")[1]
+    except:
+        time.sleep(900)
     myTable= page_soup.select("tbody")[1]
 
 
