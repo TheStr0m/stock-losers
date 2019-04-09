@@ -23,3 +23,11 @@
     font-weight: bold;
     margin: 2em;
 }
+
+.tenorholder{
+    background-image: url(./img/tenor.gif);
+    background-size: cover;
+    width: 10em;
+    height:10em;
+    justify-content: center;
+}
