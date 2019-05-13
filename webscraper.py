@@ -12,22 +12,21 @@ myJsonFile="data.json"
 myTable=""
 
 def webLoad(url):
-    global myStocks
-    myStocks=[]
     uClient = uReq(url)
     page_html = uClient.read()
     uClient.close()
     page_soup= soup(page_html,"html.parser")
-    global myTable
     try:
-        myTable= page_soup.select("tbody")[1]
+        table= page_soup.select("tbody")[1]
     except:
         time.sleep(900)
-    myTable= page_soup.select("tbody")[1]
+    table= page_soup.select("tbody")[1]
+    return table
 
 
 #Picking out interesting data
-def dataPick(table,outputArray):
+def dataPick(table):
+    stocks=[]
     for row in table.find_all("tr"):
         priceElement = (row.select("td.lastPrice span"))
         price = float((priceElement[0].text).replace(",","."))
@@ -36,9 +35,8 @@ def dataPick(table,outputArray):
             name = (nameElement[0].get("title","no title"))
             percElement = (row.select("td.changePercent"))
             perc = float((percElement[0].text).replace(",","."))
-            global myStocks
-            myStocks.append([name,perc,price])
-
+            stocks.append([name,perc,price]
+    return stocks
 
 #Writing to JSON
 def writeToJson(jsonFile,array):
@@ -65,7 +63,8 @@ def writeToJson(jsonFile,array):
         data.close()
 
 while True:
-    webLoad(my_url)
-    dataPick(myTable,myStocks)
+    myStocks=[]
+    myTable=webLoad(my_url)
+    myStocks=dataPick(myTable)
     writeToJson(myJsonFile,myStocks)
     time.sleep(300)
